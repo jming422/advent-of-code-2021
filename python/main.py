@@ -13,7 +13,7 @@ PUZZLE = 1
 
 def main():
     lines = read_input(PUZZLE)
-    out = solvers.dayone.solve(lines)
+    out = solvers.dayone.part_two(lines)
     print(out)
 
 

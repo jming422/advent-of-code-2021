@@ -1,3 +1,4 @@
+#![allow(dead_code)]
 use std::{error::Error, fs, io};
 
 mod solvers;
@@ -11,7 +12,7 @@ static PUZZLE: u8 = 1;
 
 fn main() -> Result<(), Box<dyn Error>> {
     let input = load_input(PUZZLE)?;
-    let output = day_one::solve(input)?;
+    let output = day_one::part_two(input)?;
 
     println!("{}", output);
 
