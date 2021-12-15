@@ -1,10 +1,10 @@
 use std::num::ParseIntError;
-use std::str::FromStr;
+use std::str::{FromStr, Lines};
 
-pub fn part_one(input: String) -> Result<String, ParseIntError> {
+pub fn part_one(lines: Lines) -> Result<String, ParseIntError> {
     let mut count: usize = 0;
     let mut prev: Option<isize> = None;
-    for s in input.lines() {
+    for s in lines {
         let num = isize::from_str(s)?;
         if prev.map_or(false, |p| p < num) {
             count += 1;
@@ -15,9 +15,9 @@ pub fn part_one(input: String) -> Result<String, ParseIntError> {
     Ok(format!("{}", count))
 }
 
-pub fn part_two(input: String) -> Result<String, ParseIntError> {
+pub fn part_two(lines: Lines) -> Result<String, ParseIntError> {
     let mut nums = vec![];
-    for s in input.lines() {
+    for s in lines {
         nums.push(isize::from_str(s)?);
     }
 

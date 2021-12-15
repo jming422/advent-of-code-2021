@@ -1,0 +1,67 @@
+#+TITLE: Some Interesting Statistics
+
+* Day Three, Part Two
+These samples are one time and therefore not highly accurate, but good enough to be interesting for a ballpark
+It would also be interesting to know the difference in development time, but I haven't measured this in a fair way before
+(which would probably be: to solve the problem in pseudocode or a third language first so I know equally well "what to do" at the start of both timings, and then to implement in both languages, timing each)
+
+The last row in these tables is the Rust speed multiplier, in other words, "Rust is /this/ many times faster than Python". The higher the number, the faster Rust is compared to Python; values less than 1 indicate that Rust is slower than Python for that area.
+** Execution time
+| Lang   | Min Real | Max Real | Min User |  Max User |
+|--------+----------+----------+----------+-----------|
+| Python |    0.022 |    0.030 |    0.014 |     0.019 |
+| Rust   |    0.008 |    0.015 |    0.004 |     0.006 |
+|--------+----------+----------+----------+-----------|
+|       |     2.75 |       2. |      3.5 | 3.1666667 |
+#+TBLFM: @4$2..@4$>=@2/@3
+** Peak memory footprint
+| Lang   |     Bytes |
+|--------+-----------|
+| Python |   5489472 |
+| Rust   |   1098304 |
+|--------+-----------|
+|       | 4.9981353 |
+#+TBLFM: @4$2=@2/@3
+** Instructions
+| Lang   | Insts. Retired | Cycles Elapsed |
+|--------+----------------+----------------|
+| Python |      107728907 |       41092312 |
+| Rust   |        9901746 |        3392499 |
+|--------+----------------+----------------|
+|       |      10.879789 |      12.112697 |
+#+TBLFM: @4$2..@4$>=@2/@3
+** SLoC
+I measured SLoC by removing comments as well as removing as much whitespace as possible (e.g. Rust chained functions which get formatted into one function per line were instead counted as one line per chain).
+| Lang   |       SLoC |
+|--------+------------|
+| Python |         27 |
+| Rust   |         50 |
+|--------+------------|
+|       |       0.54 |
+#+TBLFM: @4$2=@2/@3
+** Observations
+The Rust solution definitely took longer to write, mostly because the language itself forced me to think about and handle the possible error states that the program might run into.
+
+Python takes the absolute opposite approach, where the programmer is guided to consider error states as little as possible (with its emphasis on duck-typing and "just let the language raise Exceptions" attitude)
+
+The Rust solution also required almost double the lines of code to achieve the same result "well" (I could've saved 12 lines of Rust if I replaced a struct I made as a fold() accumulator with a tuple. But the struct way was more readable, and it is the way I would have done it in "the real world" for its increased readability and so I can impl methods on it)
+
+However, while the Rust solution falls behind in coding velocity and terseness, it excels in terms of runtime resource requirements on all fronts. Rust sees ~3x faster execution time, ~11x fewer CPU instructions executed, and a whopping ~5x lower memory footprint.
+** Insights
+ - Rust is excellent when execution speed & memory footprint are key concerns :: Because it is very fast and memory efficient
+   - Python executes slower and uses more memory
+ - Python is excellent when prototyping :: Because you can easily pack a lot of developer intent into very few lines of Python
+   - Rust takes more time & effort to get developer intent to compile
+ - Rust is great when program reliability is key :: Because it forces me to handle many more error & edge cases than I otherwise would, and it can guarantee error handling completeness at compile time
+   - Python does not enforce or encourage error handling
+ - Python is great when requirements are not entirely known or are evolving :: Because it is fast and simple to iterate on existing Python code
+   - Rust has a threshold: if a change in requirements dictates a change in type for something in the old code, then it is slow and painstaking to propagate that type change through all parts of the code which touch it
+
+For me, all this boils down to:
+*Choosing between Python and Rust is mostly a tradeoff between development velocity and runtime reliability & velocity.* Python is faster to dev on; Rust produces faster and more reliable programs.
+
+Where speed & reliability are not key concerns (e.g. while doing data science or building a prototype), Python is the clear winner.
+
+Where slower devlopment is worth better program execution speed, memory footprint, and reliability (e.g. while building operating system components or high-frequency securities trading software), Rust is the clear winner.
+
+If your needs are somewhere inbetween, then it's likely your choice will come down to: how much do you want a compiler to participate in your developer experience (DX)? If you want the compiler to help you avoid mistakes and handle error states, Rust is for you, but if you want it to stay out of your way and let you decide if, when, and where you want to handle error states, then Python is the way to go.
