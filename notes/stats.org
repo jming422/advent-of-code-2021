@@ -48,7 +48,7 @@ Python takes the absolute opposite approach, where the programmer is guided to c
 
 The Rust solution also required almost double the lines of code to achieve the same result "well" (I could've saved 12 lines of Rust if I replaced a struct I made as a fold() accumulator with a tuple. But the struct way was more readable, and it is the way I would have done it in "the real world" for its increased readability and so I can impl methods on it)
 
-However, while the Rust solution falls behind in coding velocity and terseness, it excels in terms of runtime resource requirements on all fronts. Rust sees ~3x faster execution time, ~11x fewer CPU instructions executed, and a whopping ~5x lower memory footprint.
+However, while the Rust solution falls behind in coding velocity and terseness, it excels in terms of runtime resource requirements on all fronts. Rust sees ~2.5x faster execution time, ~11x fewer CPU instructions executed, and a whopping ~5x lower memory footprint.
 ** Insights
  - Rust is excellent when execution speed & memory footprint are key concerns :: Because it is very fast and memory efficient
    - Python executes slower and uses more memory
