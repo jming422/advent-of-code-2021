@@ -1,9 +1,11 @@
 #+TITLE: Some Interesting Statistics
 
 * Day Three, Part Two
-These samples are one time and therefore not highly accurate, but good enough to be interesting for a ballpark
-It would also be interesting to know the difference in development time, but I haven't measured this in a fair way before
-(which would probably be: to solve the problem in pseudocode or a third language first so I know equally well "what to do" at the start of both timings, and then to implement in both languages, timing each)
+These samples are one time and therefore not highly accurate, but good enough to be interesting for a ballpark.
+
+It would also be interesting to know the difference in development time, but I haven't measured this in a fair way before.
+
+(This would probably be: to solve the problem in pseudocode or a third language first so I know equally well "what to do" at the start of both timings, and then to implement in both languages, timing each)
 
 The last row in these tables is the Rust speed multiplier, in other words, "Rust is /this/ many times faster than Python". The higher the number, the faster Rust is compared to Python; values less than 1 indicate that Rust is slower than Python for that area.
 ** Execution time
@@ -58,7 +60,10 @@ However, while the Rust solution falls behind in coding velocity and terseness, 
    - Rust has a threshold: if a change in requirements dictates a change in type for something in the old code, then it is slow and painstaking to propagate that type change through all parts of the code which touch it
 
 For me, all this boils down to:
-*Choosing between Python and Rust is mostly a tradeoff between development velocity and runtime reliability & velocity.* Python is faster to dev on; Rust produces faster and more reliable programs.
+
+*** Python is faster to dev on; Rust produces faster and more reliable programs.
+
+Choosing between Python and Rust is mostly a tradeoff between development velocity and runtime reliability & velocity.
 
 Where speed & reliability are not key concerns (e.g. while doing data science or building a prototype), Python is the clear winner.
 
