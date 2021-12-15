@@ -7,14 +7,14 @@ It would also be interesting to know the difference in development time, but I h
 
 (This would probably be: to solve the problem in pseudocode or a third language first so I know equally well "what to do" at the start of both timings, and then to implement in both languages, timing each)
 
-The last row in these tables is the Rust speed multiplier, in other words, "Rust is /this/ many times faster than Python". The higher the number, the faster Rust is compared to Python; values less than 1 indicate that Rust is slower than Python for that area.
+The last row (🦀) in these tables is the Rust speed multiplier, in other words, "Rust is /this/ many times faster than Python". The higher the number, the faster Rust is compared to Python; values less than 1 indicate that Rust is slower than Python for that area.
 ** Execution time
 | Lang   | Min Real | Max Real | Min User |  Max User |
 |--------+----------+----------+----------+-----------|
 | Python |    0.022 |    0.030 |    0.014 |     0.019 |
 | Rust   |    0.008 |    0.015 |    0.004 |     0.006 |
 |--------+----------+----------+----------+-----------|
-|       |     2.75 |       2. |      3.5 | 3.1666667 |
+| 🦀     |     2.75 |       2. |      3.5 | 3.1666667 |
 #+TBLFM: @4$2..@4$>=@2/@3
 ** Peak memory footprint
 | Lang   |     Bytes |
@@ -22,7 +22,7 @@ The last row in these tables is the Rust speed multiplier, in other words, "Rust
 | Python |   5489472 |
 | Rust   |   1098304 |
 |--------+-----------|
-|       | 4.9981353 |
+| 🦀      | 4.9981353 |
 #+TBLFM: @4$2=@2/@3
 ** Instructions
 | Lang   | Insts. Retired | Cycles Elapsed |
@@ -30,7 +30,7 @@ The last row in these tables is the Rust speed multiplier, in other words, "Rust
 | Python |      107728907 |       41092312 |
 | Rust   |        9901746 |        3392499 |
 |--------+----------------+----------------|
-|       |      10.879789 |      12.112697 |
+| 🦀      |      10.879789 |      12.112697 |
 #+TBLFM: @4$2..@4$>=@2/@3
 ** SLoC
 I measured SLoC by removing comments as well as removing as much whitespace as possible (e.g. Rust chained functions which get formatted into one function per line were instead counted as one line per chain).
@@ -39,7 +39,7 @@ I measured SLoC by removing comments as well as removing as much whitespace as p
 | Python |         27 |
 | Rust   |         50 |
 |--------+------------|
-|       |       0.54 |
+| 🦀      |       0.54 |
 #+TBLFM: @4$2=@2/@3
 ** Observations
 The Rust solution definitely took longer to write, mostly because the language itself forced me to think about and handle the possible error states that the program might run into.
