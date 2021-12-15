@@ -7,7 +7,7 @@ It would also be interesting to know the difference in development time, but I h
 
 (This would probably be: to solve the problem in pseudocode or a third language first so I know equally well "what to do" at the start of both timings, and then to implement in both languages, timing each)
 
-The last row (🦀) in these tables is the Rust speed multiplier, in other words, "Rust is /this/ many times faster than Python". The higher the number, the faster Rust is compared to Python; values less than 1 indicate that Rust is slower than Python for that area.
+The last row (🦀, after [[https://www.rust-lang.org/learn/get-started#ferris][Ferris]]) in these tables is the Rust speed multiplier, in other words, "Rust is /this/ many times faster than Python". The higher the number, the faster Rust is compared to Python; values less than 1 indicate that Rust is slower than Python for that area.
 ** Execution time
 | Lang   | Min Real | Max Real | Min User |  Max User |
 |--------+----------+----------+----------+-----------|
