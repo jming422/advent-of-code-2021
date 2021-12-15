@@ -1,7 +1,7 @@
 #+TITLE: Some Interesting Statistics
 
 * Day Three, Part Two
-These samples are one time and therefore not highly accurate, but good enough to be interesting for a ballpark.
+These samples are one time and therefore not highly accurate, but good enough to be interesting for a ballpark. The Rust measurements are from a binary compiled in release mode, and the Python measurements from an ordinary Python execution (`python3 main.py`), not from Cython or anything like that.
 
 It would also be interesting to know the difference in development time, but I haven't measured this in a fair way before.
 
@@ -51,7 +51,7 @@ The Rust solution also required almost double the lines of code to achieve the s
 However, while the Rust solution falls behind in coding velocity and terseness, it excels in terms of runtime resource requirements on all fronts. Rust sees ~2.5x faster execution time, ~11x fewer CPU instructions executed, and a whopping ~5x lower memory footprint.
 ** Insights
  - Rust is excellent when execution speed & memory footprint are key concerns :: Because it is very fast and memory efficient
-   - Python executes slower and uses more memory
+   - (Ordinary) Python executes slower and uses more memory
  - Python is excellent when prototyping :: Because you can easily pack a lot of developer intent into very few lines of Python
    - Rust takes more time & effort to get developer intent to compile
  - Rust is great when program reliability is key :: Because it forces me to handle many more error & edge cases than I otherwise would, and it can guarantee error handling completeness at compile time
