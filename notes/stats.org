@@ -52,7 +52,7 @@ However, while the Rust solution falls behind in coding velocity and terseness, 
 ** Insights
  - Rust is excellent when execution speed & memory footprint are key concerns :: Because it is very fast and memory efficient
    - (Ordinary) Python executes slower and uses more memory
- - Python is excellent when prototyping :: Because you can easily pack a lot of developer intent into very few lines of Python
+ - Python is excellent when prototyping :: Because I can easily pack a lot of developer intent into very few lines of Python
    - Rust takes more time & effort to get developer intent to compile
  - Rust is great when program reliability is key :: Because it forces me to handle many more error & edge cases than I otherwise would, and it can guarantee error handling completeness at compile time
    - Python does not enforce or encourage error handling
