@@ -8,12 +8,8 @@ pub fn part_one(lines: Lines) -> Result<String, MyError> {
     for line in lines {
         let mut words = line.split_whitespace();
 
-        let direction = words.next().ok_or(MyError::new(ErrorKind::Other(
-            "Not enough fields on one of the lines!".to_string(),
-        )))?;
-        let magnitude = words.next().ok_or(MyError::new(ErrorKind::Other(
-            "Not enough fields on one of the lines!".to_string(),
-        )))?;
+        let direction = words.next().ok_or(MyError::new(ErrorKind::BadInput))?;
+        let magnitude = words.next().ok_or(MyError::new(ErrorKind::BadInput))?;
         let delta = i32::from_str(magnitude).map_err(|e| MyError::wrap_parse_int(e))?;
 
         match direction {
@@ -21,10 +17,7 @@ pub fn part_one(lines: Lines) -> Result<String, MyError> {
             "up" => depth -= delta,
             "down" => depth += delta,
             _ => {
-                return Err(MyError::new(ErrorKind::Other(format!(
-                    "Invalid direction {}",
-                    direction
-                ))));
+                return Err(MyError::new(ErrorKind::BadInput));
             }
         };
     }
@@ -39,12 +32,8 @@ pub fn part_two(lines: Lines) -> Result<String, MyError> {
     for line in lines {
         let mut words = line.split_whitespace();
 
-        let direction = words.next().ok_or(MyError::new(ErrorKind::Other(
-            "Not enough fields on one of the lines!".to_string(),
-        )))?;
-        let magnitude = words.next().ok_or(MyError::new(ErrorKind::Other(
-            "Not enough fields on one of the lines!".to_string(),
-        )))?;
+        let direction = words.next().ok_or(MyError::new(ErrorKind::BadInput))?;
+        let magnitude = words.next().ok_or(MyError::new(ErrorKind::BadInput))?;
         let delta = i32::from_str(magnitude).map_err(|e| MyError::wrap_parse_int(e))?;
 
         match direction {
@@ -55,10 +44,7 @@ pub fn part_two(lines: Lines) -> Result<String, MyError> {
             "up" => aim -= delta,
             "down" => aim += delta,
             _ => {
-                return Err(MyError::new(ErrorKind::Other(format!(
-                    "Invalid direction {}",
-                    direction
-                ))));
+                return Err(MyError::new(ErrorKind::BadInput));
             }
         };
     }

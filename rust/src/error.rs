@@ -4,6 +4,7 @@ use std::fmt;
 #[derive(Debug, Clone, PartialEq)]
 pub enum ErrorKind {
     ParseInt,
+    BadInput,
     Other(String),
 }
 
@@ -26,7 +27,7 @@ impl MyError {
     }
 
     // These "wrap" functions reduce duplicate code in the common
-    // `.map_err(|err| please_turn_this_into_rb_error(err))` type situations
+    // `.map_err(|err| please_turn_this_into_my_error(err))` type situations
     pub fn wrap_parse_int<E>(err: E) -> Self
     where
         E: Into<Box<dyn Error + 'static>>,

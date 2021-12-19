@@ -36,27 +36,19 @@ pub fn part_one(lines: Lines) -> Result<String, MyError> {
             init.push(Counter::new());
         }
     } else {
-        return Err(MyError::new(ErrorKind::Other(
-            "No input lines!".to_string(),
-        )));
+        return Err(MyError::new(ErrorKind::BadInput));
     }
 
     let counts = lines.try_fold(init, |mut acc, line| {
         for (i, c) in line.chars().enumerate() {
             if i >= acc.len() {
-                return Err(MyError::new(ErrorKind::Other(
-                    "Got a line with more digits than the first line!".to_string(),
-                )));
+                return Err(MyError::new(ErrorKind::BadInput));
             }
 
             match c {
                 '0' => acc[i].zeros += 1,
                 '1' => acc[i].ones += 1,
-                _ => {
-                    return Err(MyError::new(ErrorKind::Other(
-                        "That isn't binary!".to_string(),
-                    )))
-                }
+                _ => return Err(MyError::new(ErrorKind::BadInput)),
             }
         }
         Ok(acc)
@@ -77,12 +69,7 @@ fn fold_count_digits(mut acc: Counter, next: char) -> Result<Counter, MyError> {
     match next {
         '0' => acc.zeros += 1,
         '1' => acc.ones += 1,
-        _ => {
-            return Err(MyError::new(ErrorKind::Other(format!(
-                "{} isn't binary!",
-                next
-            ))))
-        }
+        _ => return Err(MyError::new(ErrorKind::BadInput)),
     };
     Ok(acc)
 }
@@ -101,13 +88,9 @@ pub fn part_two(lines: Lines) -> Result<String, MyError> {
     let num_digits = o2_vals
         .first()
         .map(|cs| cs.len())
-        .ok_or(MyError::new(ErrorKind::Other(
-            "No input lines!".to_string(),
-        )))?;
+        .ok_or(MyError::new(ErrorKind::BadInput))?;
     if num_digits == 0 || o2_vals.iter().any(|cs| cs.len() != num_digits) {
-        return Err(MyError::new(ErrorKind::Other(
-            "All lines must be of the same, non-zero length!".to_string(),
-        )));
+        return Err(MyError::new(ErrorKind::BadInput));
     };
 
     for i in 0..num_digits {
