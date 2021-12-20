@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import solvers.dayfour
+import solvers.dayseven
 
 
 def read_input(i):
@@ -8,12 +8,12 @@ def read_input(i):
         return f.readlines()
 
 
-PUZZLE = 4
+PUZZLE = 7
 
 
 def main():
     lines = read_input(PUZZLE)
-    out = solvers.dayfour.part_two(lines)
+    out = solvers.dayseven.part_two(lines)
     print(out)
 
 
